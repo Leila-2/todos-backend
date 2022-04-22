@@ -3,7 +3,7 @@ const { Todo } = require('../../models/todos')
 
 const getAll = async (req, res, next) => {
     try {
-        const { page = 1, limit = 20 } = req.query;
+        const { page = 1, limit = 5 } = req.query;
         if (isNaN(page) || isNaN(limit)) {
             throw new CreateError(400, 'Params limit and page must be a number')
         }
