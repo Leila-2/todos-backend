@@ -1,11 +1,11 @@
 const express = require('express')
-
+const { authenticate } = require('../../middlewares/index')
 const ctrl = require('../../controllers/index')
 const router = express.Router()
 
-router.get('/', ctrl.getAll)
+router.get('/', authenticate, ctrl.getAll)
 
-router.post('/', ctrl.add)
+router.post('/', authenticate, ctrl.add)
 
 router.patch('/:todoId', ctrl.updateStatus)
 

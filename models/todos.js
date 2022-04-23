@@ -11,7 +11,12 @@ const todoSchema = new Schema({
         type: Boolean,
         default: false,
     },
-});
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+        required: true
+    }
+}, { versionKey: false });
 
 
 const addJoiTodoSchema = Joi.object({

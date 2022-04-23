@@ -3,6 +3,7 @@ const logger = require('morgan')
 const cors = require('cors')
 require("dotenv").config()
 
+const authRouter = require('./routes/api/auth')
 const todosRouter = require('./routes/api/todos')
 
 const app = express()
@@ -13,8 +14,8 @@ app.use(logger(formatsLogger))
 app.use(cors())
 app.use(express.json())
 
+app.use('/api/auth', authRouter)
 app.use('/api/todos', todosRouter)
-
 app.use((req, res) => {
     res.status(404).json({ message: 'Not found' })
 })
