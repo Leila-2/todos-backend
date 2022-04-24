@@ -14,7 +14,7 @@ const getAll = async (req, res, next) => {
         const result = await Todo.find({}, '-createdAt', { skip, limit: +limit })
         const total = await Todo.count({})
         console.log(total)
-        res.json(result)
+        res.json({ total, result })
     } catch (error) {
         next(error);
     }
