@@ -10,7 +10,7 @@ const getAll = async (req, res, next) => {
         }
         const skip = (page - 1) * limit;
 
-        const result = await Todo.find({}, '-createdAt', { skip, limit: +limit }).populate()
+        const result = await Todo.find({}, '-createdAt', { skip, limit: +limit })
         res.json(result)
     } catch (error) {
         next(error);
