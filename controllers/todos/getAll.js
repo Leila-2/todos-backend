@@ -1,6 +1,7 @@
 const CreateError = require("http-errors");
 const { Todo } = require('../../models/todos')
 
+
 const getAll = async (req, res, next) => {
     try {
         const { page = 1, limit = 5 } = req.query;
@@ -11,6 +12,8 @@ const getAll = async (req, res, next) => {
         const skip = (page - 1) * limit;
 
         const result = await Todo.find({}, '-createdAt', { skip, limit: +limit })
+        const total = await Todo.count({})
+        console.log(total)
         res.json(result)
     } catch (error) {
         next(error);
