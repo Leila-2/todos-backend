@@ -7,8 +7,8 @@ const add = async (req, res, next) => {
         if (error) {
             throw new CreateError(400, error.message)
         }
-        const data = { ...req.body };
-        const result = await Todo.create(data)
+        // const data = { ...req.body };
+        const result = await Todo.create(req.body)
         res.status(201).json(result)
     } catch (error) {
         next(error)
